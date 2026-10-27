@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: gym-consistency
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /ping
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: VAPID_PUBLIC
+        sync: false
+      - key: VAPID_PRIVATE
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_REPO
+        sync: false
+      - key: INVITE_CODE
+        sync: false
